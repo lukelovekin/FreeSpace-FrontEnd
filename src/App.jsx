@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 // import { Route, Switch } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
-import Portfolios from './Portfolios'
+// import Portfolios from './Portfolios'
 import { stateReducer, StateContext } from './store'
 // import api from './api'
 
