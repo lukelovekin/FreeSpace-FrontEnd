@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 // import { Route, Switch } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
+import Portfolios from './Portfolios'
 import { stateReducer, StateContext } from './store'
 // import api from './api'
 
@@ -24,6 +25,7 @@ function App() {
 
     <StateContext.Provider value={{state, dispatch}}>
     {/* <Switch> */}
+    {/* <Portfolios/> */}
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
