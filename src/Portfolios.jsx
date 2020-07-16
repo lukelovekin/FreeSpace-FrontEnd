@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 export default function Portfolios() {
-    const {store, dispatch} useContext(stateContext)
+    const {store, dispatch} = useContext(stateContext)
 
     return (
         <div>
