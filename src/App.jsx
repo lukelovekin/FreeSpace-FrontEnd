@@ -1,32 +1,37 @@
-import React, { useReducer } from 'react';
-// import { Route, Switch } from 'react-router-dom'
-import logo from './logo.svg';
+import React, { useReducer, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom'
+// import logo from './logo.svg';
 import './App.css';
-// import Portfolios from './Portfolios'
+import Home from './Home'
+import Portfolios from './Portfolios'
+import CreatePortfolio from './CreatePortfolio'
 import { stateReducer, StateContext } from './store'
-// import api from './api'
+import api from './api'
+
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, { portfolios: [] })
 
-  // useEffect(() => {
-  //   api.get('portfolios')
-  //     .then(res => {
-  //       console.log(res)
-  //       // update portfolios in the reducer with the value res.data
-  //       dispatchEvent({
-  //         type: 'setPortfolios',
-  //         data: res.data
-  //       })
-  //     })
-  // }, [])        when this is uncommented and working it should display whats in the portfolio db
+
+  // at the moment all this is doing is console logging the database data.
+  useEffect(() => {
+    api.get('portfolios')
+      .then(res => {
+        console.log(res)
+        // update portfolios in the reducer with the value res.data
+        dispatch({
+          type: 'setPortfolios',
+          data: res.data
+        })
+      })
+  }, [])     
+
 
   return (
 
     <StateContext.Provider value={{state, dispatch}}>
-    {/* <Switch> */}
-    {/* <Portfolios/> */}
-      <div className="App">
+    <Switch>
+      {/* <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -41,8 +46,11 @@ function App() {
             Learn React GAB
           </a>
         </header>
-      </div>
-    {/* </Switch > */}
+      </div> */}
+      <Route exact path="/" component={Home} />
+      <Route exact path="/portfolios" component={Portfolios} />
+      <Route exact path="/portfolios/new" component={CreatePortfolio} />
+    </Switch >
     </StateContext.Provider >
   );
 }
