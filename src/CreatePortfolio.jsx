@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react'
-import { StateContext } from './store'
+// import React, { useState, useContext } from 'react'
+// import { StateContext } from './store'
 // import Axios from 'axios'
-import api from './api'
+// import api from './api'
 
 export default function CreatePortfolio(props) {
     // const [name, setName] = useState("")
