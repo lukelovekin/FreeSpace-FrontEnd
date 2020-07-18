@@ -6,8 +6,6 @@ export default function CreatePortfolio(props) {
     const [uid, setUid] = useState("")
     const [bio, setBio] = useState("")
     const {state, dispatch} = useContext(StateContext)
-    // etc
-    // etc
 
     const onChange = (e) => {
         switch (e.target.name) {
@@ -19,7 +17,8 @@ export default function CreatePortfolio(props) {
                 // and here
                 setBio(e.target.value)
                 break
-                
+            default: 
+                console.log("error")
         }
     }
 

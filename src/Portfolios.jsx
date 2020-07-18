@@ -3,7 +3,7 @@ import { StateContext } from './store'
 import { Link } from 'react-router-dom'
 
 export default function Portfolios() {
-    const {state, dispatch} = useContext(StateContext)
+    const {state /*, dispatch*/} = useContext(StateContext)
 
     return (
         <div>
