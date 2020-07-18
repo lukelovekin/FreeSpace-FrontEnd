@@ -5,6 +5,7 @@ import './App.css';
 import Home from './Home'
 import Portfolios from './Portfolios'
 import CreatePortfolio from './CreatePortfolio'
+import NoMatch from './NoMatch'
 import { stateReducer, StateContext } from './store'
 import api from './api'
 
@@ -50,6 +51,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/portfolios" component={Portfolios} />
       <Route exact path="/portfolios/new" component={CreatePortfolio} />
+      <Route component={NoMatch} />
     </Switch >
     </StateContext.Provider >
   );
