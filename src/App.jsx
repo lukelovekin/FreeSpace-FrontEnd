@@ -8,6 +8,8 @@ import CreatePortfolio from './CreatePortfolio'
 import NoMatch from './NoMatch'
 import { stateReducer, StateContext } from './store'
 import api from './api'
+import Login from './Login'
+import SignUp from './SignUp'
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/portfolios" component={Portfolios} />
       <Route exact path="/portfolios/new" component={CreatePortfolio} />
+      <Route exact path="/sign_up" component={SignUp} />
+      <Route exact path="/login" component={Login} />
       <Route component={NoMatch} />
     </Switch >
     </StateContext.Provider >
