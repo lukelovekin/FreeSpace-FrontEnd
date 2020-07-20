@@ -8,6 +8,8 @@ import CreatePortfolio from './CreatePortfolio'
 import NoMatch from './NoMatch'
 import { stateReducer, StateContext } from './store'
 import api from './api'
+import Login from './Login'
+import SignUp from './SignUp'
 
 
 function App() {
