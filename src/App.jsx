@@ -51,6 +51,8 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/portfolios" component={Portfolios} />
       <Route exact path="/portfolios/new" component={CreatePortfolio} />
+      <Route exact path="/sign_up" component={SignUp} />
+      <Route exact path="/login" component={Login} />
       <Route component={NoMatch} />
     </Switch >
     </StateContext.Provider >
