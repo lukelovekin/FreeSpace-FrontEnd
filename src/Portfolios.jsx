@@ -13,7 +13,7 @@ export default function Portfolios() {
                 state.portfolios.map((item, index) => (
                     <article key={index}>
                         {console.log(item)}
-                        <p>{item.uid}</p>
+                        <p>{item.id}</p>
                     </article>
                 ))
             }
