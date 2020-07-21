@@ -10,6 +10,7 @@ import { stateReducer, StateContext } from './store'
 import api from './api'
 import Login from './Login'
 import SignUp from './SignUp'
+import ImageUpload from './ImageUpload'
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
       <Route exact path="/portfolios/new" component={CreatePortfolio} />
       <Route exact path="/sign_up" component={SignUp} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/imageupload" component={ImageUpload} />
       <Route component={NoMatch} />
     </Switch >
     </StateContext.Provider >
