@@ -9,6 +9,14 @@ const stateReducer = (state, action) => {
                 ...state,
                 portfolios: action.data
             }
+        // case 'setUser':
+        //     return {
+        //         user: action.data
+        //     }
+        // case 'setError':
+        //     return {
+        //         error: action.data
+        //     }
         default:
             return state
     }
