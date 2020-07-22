@@ -7,8 +7,8 @@ class Form extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: “”,
-            image: “”
+            title: '',
+            image: ''
         }
         this.onChangeTitle = this.onChangeTitle.bind(this)
         this.onChangeImage = this.onChangeImage.bind(this)
@@ -23,13 +23,13 @@ class Form extends React.Component {
     onSubmit(e) {
         e.preventDefault()
         let formData = new FormData()
-        formData.append(“title”, this.state.title)
-        formData.append(“image”, this.state.image)
+        formData.append('title', this.state.title)
+        formData.append('image', this.state.image)
         this.props.addImage(formData)
   
         this.setState({
-        title: “”,
-        image: “”
+        title: '',
+        image: ''
         })
     }
     render() {
@@ -53,7 +53,7 @@ class Form extends React.Component {
                         className='form-input'
                         onChange={this.onChangeImage} 
                     />
-                    
+
                     <button type='submit' className='submit-btn'>Submit!</button>
                 </form>
             </div>

@@ -11,6 +11,7 @@ import api from './api'
 import Login from './Login'
 import SignUp from './SignUp'
 import ImageUpload from './ImageUpload'
+import Form from './components/Form'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 
     <StateContext.Provider value={{state, dispatch}}>
     <Switch>
+    <Form />  
       {/* <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
