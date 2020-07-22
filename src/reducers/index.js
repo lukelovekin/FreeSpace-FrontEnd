@@ -7,9 +7,9 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
     case ADD_IMAGE:
-        return {…state, images: [action.payload, …state.images]}
+        return { ...state, images: [action.payload, ...state.images]}
     case GET_IMAGES:
-        return { …state, images: action.payload }
+        return { ...state, images: action.payload }
     default:
         return state
     }

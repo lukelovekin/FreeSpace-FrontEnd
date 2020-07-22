@@ -37,6 +37,7 @@ class Form extends React.Component {
             <div className='form-container'>
                 <form encType='multipart/form-data' onSubmit={this.onSubmit}> 
                     <h2>Image Form</h2>
+
                     <label className='form-label'>Image Title</label>
                     <input 
                         className='form-input'
@@ -45,12 +46,14 @@ class Form extends React.Component {
                         value={this.state.title}
                         onChange={this.onChangeTitle}
                     />
+
                     <label className='form-label'>Choose an Image</label>
                     <input 
                         type='file' 
                         className='form-input'
                         onChange={this.onChangeImage} 
                     />
+                    
                     <button type='submit' className='submit-btn'>Submit!</button>
                 </form>
             </div>
