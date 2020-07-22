@@ -19,7 +19,7 @@ function App() {
   // const url = "http://localhost:4000"
 
   // let url = "http://localhost:4000"
-  let = url = "https://free-space-api.herokuapp.com"
+  let url = "https://free-space-api.herokuapp.com"
   
 
   // at the moment all this is doing is console logging the database data.
