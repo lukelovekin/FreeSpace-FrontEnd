@@ -36,11 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-body {
-  text-align: center;
-}
-
-button {
-  margin: 10px;
-}

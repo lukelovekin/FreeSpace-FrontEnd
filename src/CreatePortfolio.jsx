@@ -3,13 +3,13 @@ import { StateContext } from './store'
 import api from './api'
 
 export default function CreatePortfolio(props) {
-    const [id, setUid] = useState("")
+    const [uid, setUid] = useState("")
     const [bio, setBio] = useState("")
     const {state, dispatch} = useContext(StateContext)
 
     const onChange = (e) => {
         switch (e.target.name) {
-            case "id":
+            case "uid":
                 // can validate here
                 setUid(e.target.value)
                 break
@@ -23,7 +23,7 @@ export default function CreatePortfolio(props) {
     }
 
     const onSubmit = (e) => {
-        const portfolio = { id, bio }
+        const portfolio = { uid, bio }
 
         e.preventDefault()
         dispatch({
@@ -39,8 +39,8 @@ export default function CreatePortfolio(props) {
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <label htmlFor="id">id</label>
-                <input onChange={onChange} value={id} type="text" name="id" id="id" />
+                <label htmlFor="uid">uid</label>
+                <input onChange={onChange} value={uid} type="text" name="uid" id="uid" />
                 <label htmlFor="bio">bio</label>
                 <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
                 <button>Create</button>

@@ -5,34 +5,15 @@ import './App.css';
 import Home from './Home'
 import Portfolios from './Portfolios'
 import CreatePortfolio from './CreatePortfolio'
+import ArtistProfile from './ArtistProfile'
 import NoMatch from './NoMatch'
 import { stateReducer, StateContext } from './store'
 import api from './api'
 import Login from './Login'
 import SignUp from './SignUp'
 
-
-function App() {
-  const [state, dispatch] = useReducer(stateReducer, { portfolios: [] })
-
-
-  // at the moment all this is doing is console logging the database data.
-  useEffect(() => {
-    api.get('portfolios')
-      .then(res => {
-        console.log(res)
-        // update portfolios in the reducer with the value res.data
-        dispatch({
-          type: 'setPortfolios',
-          data: res.data
-        })
-      })
-  }, [])     
-
-
+function App() { 
   return (
-
-    <StateContext.Provider value={{state, dispatch}}>
     <Switch>
       {/* <div className="App">
         <header className="App-header">
@@ -51,13 +32,13 @@ function App() {
         </header>
       </div> */}
       <Route exact path="/" component={Home} />
+      <Route exact path="/profile/:id" component={ArtistProfile} />
       <Route exact path="/portfolios" component={Portfolios} />
       <Route exact path="/portfolios/new" component={CreatePortfolio} />
       <Route exact path="/sign_up" component={SignUp} />
       <Route exact path="/login" component={Login} />
       <Route component={NoMatch} />
-    </Switch >
-    </StateContext.Provider >
+    </Switch>
   );
 }
 
