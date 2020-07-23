@@ -11,6 +11,7 @@ import NoMatch from './NoMatch'
 import api from './api'
 import Login from './Login'
 import SignUp from './SignUp'
+import ImageUpload from './components/ImageUpload'
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, { portfolios:[]})
