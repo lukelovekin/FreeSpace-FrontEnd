@@ -4,7 +4,7 @@ import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
 
 import './App.css';
-import Home from './Home'
+// import Home from './Home'
 import Portfolios from './Portfolios'
 import CreatePortfolio from './CreatePortfolio'
 import NoMatch from './NoMatch'

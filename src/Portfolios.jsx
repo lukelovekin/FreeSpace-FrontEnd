@@ -5,7 +5,7 @@ import { UserContext } from './store'
 
 export default function Portfolios() {
 const {state /*, dispatch*/} = useContext(StateContext)
-const { user, handleLogOut } = useContext(UserContext)
+const { user } = useContext(UserContext)
 
     return (
         <div>
