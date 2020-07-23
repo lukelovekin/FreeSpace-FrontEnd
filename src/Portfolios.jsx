@@ -30,6 +30,8 @@ const { user } = useContext(UserContext)
                     <article key={index}>
                         {console.log(item)}
                         <p>{item.id}</p>
+                        <p>{item.bio}</p>
+                        <hr/>
                     </article>
                 ))
             }
