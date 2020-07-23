@@ -39,14 +39,14 @@ if (process.env.REACT_APP_ENV==='development') {
       
   }, [])     
 
-  // useEffect(() => {
-  //   api.get(`/users/me`, {
-  //     withCredentials: true
-  //   })
-  //     .then(result => {
-  //       setUser(result.data)
-  //     })
-  // }, [])
+  useEffect(() => {
+    api.get(`/users/me`, {
+      withCredentials: true
+    })
+      .then(result => {
+        setUser(result.data)
+      })
+  }, [])
 
   const handleSignUp = (e) => {
     e.preventDefault()
