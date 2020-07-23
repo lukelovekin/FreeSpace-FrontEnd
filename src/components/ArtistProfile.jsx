@@ -28,7 +28,7 @@ export default function ArtistProfile(props) {
 			</div>
 			<div className="row">
 				<div className="input-group">
-				    <input type="text" value="234wersdf" disabled="disabled" />
+				    <input type="text" value="234wersd" disabled="disabled" />
 					<CopyToClipboard text={"234345sdf"}>
 					  <button>Copy Link</button>
 					</CopyToClipboard>
