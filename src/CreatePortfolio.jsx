@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { StateContext } from './store'
 import api from './api'
+import ImageUpload from './components/ImageUpload'
 
 export default function CreatePortfolio(props) {
     const [id, setUid] = useState("")
@@ -45,6 +46,7 @@ export default function CreatePortfolio(props) {
                 <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
                 <button>Create</button>
             </form>
+            <ImageUpload />
         </div>
     )
 }
