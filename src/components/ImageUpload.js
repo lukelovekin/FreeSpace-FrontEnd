@@ -18,7 +18,7 @@ const ImageUpload = () => {
       body: formData,
     }
 
-    return fetch('https://api.Cloudinary.com/v1_1/dt8aodbvm/image/upload', options)
+    return fetch('https://api.Cloudinary.com/v1_1/dt8aodbvm/upload', options)
       .then(res => res.json())
       .then(res => {
         setImageUrl(res.secure_url)
@@ -31,13 +31,14 @@ const ImageUpload = () => {
     return (
       <main className="App">
         <section className="left-side">
+          <h3>Upload an image</h3>
           <form>
             <div className="form-group">
               <input type="file"/>
             </div>
 
             <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
-            <button type="button" className="btn widget-btn">Upload Via Widget</button>
+            {/* <button type="button" className="btn widget-btn">Upload Via Widget</button> */}
           </form>
         </section>
         <section className="right-side">
