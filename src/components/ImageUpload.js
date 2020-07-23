@@ -18,7 +18,7 @@ const ImageUpload = () => {
       body: formData,
     }
 
-    return fetch('https://api.Cloudinary.com/v1_1/dt8aodbvm/upload', options)
+    return fetch('https://api.Cloudinary.com/v1_1/dt8aodbvm/image/upload', options)
       .then(res => res.json())
       .then(res => {
         setImageUrl(res.secure_url)
