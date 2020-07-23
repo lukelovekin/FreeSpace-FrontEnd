@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import { Route, BrowserRouter, Link, Switch } from 'react-router-dom'
-import { stateReducer,  UserContext, ErrorContext } from './store'
+import { Route, Link, Switch } from 'react-router-dom'
+import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
 
 import './App.css';
@@ -14,7 +14,7 @@ import SignUp from './SignUp'
 // import ImageUpload from './components/ImageUpload'
 
 function App() {
-  const [/*state,*/ dispatch] = useReducer(stateReducer, { portfolios:[]})
+  const [state, dispatch] = useReducer(stateReducer, { portfolios:[] })
   const [user, setUser] = useState(UserContext) //false
   const [error, setError] = useState(ErrorContext) //false
 
@@ -36,16 +36,17 @@ if (process.env.REACT_APP_ENV==='development') {
           data: res.data
         })
       })
+      
   }, [])     
 
-  useEffect(() => {
-    api.get(`/users/me`, {
-      withCredentials: true
-    })
-      .then(result => {
-        setUser(result.data)
-      })
-  }, [])
+  // useEffect(() => {
+  //   api.get(`/users/me`, {
+  //     withCredentials: true
+  //   })
+  //     .then(result => {
+  //       setUser(result.data)
+  //     })
+  // }, [])
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -99,9 +100,9 @@ if (process.env.REACT_APP_ENV==='development') {
 
   return (
     <>
+    <StateContext.Provider value={{state, dispatch}}>
     <UserContext.Provider value={{user, setUser, handleLogIn, handleGoogleAuth, handleSignUp, handleLogOut}}>
     <ErrorContext.Provider value={{error, setError}}>
-      <BrowserRouter>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/sign_up">SignUp</Link>
@@ -116,9 +117,9 @@ if (process.env.REACT_APP_ENV==='development') {
           <Route exact path="/login" component={Login} />
           <Route component={NoMatch} />
         </Switch>
-      </BrowserRouter >
       </ErrorContext.Provider>
     </UserContext.Provider >
+    </StateContext.Provider>
     </>
   );
 }
