@@ -1,28 +1,30 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
+import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
+
+
 import './App.css';
 import Home from './Home'
 import Portfolios from './Portfolios'
 import CreatePortfolio from './CreatePortfolio'
 import NoMatch from './NoMatch'
-import { stateReducer, StateContext } from './store'
 import api from './api'
 import Login from './Login'
 import SignUp from './SignUp'
-import ImageUpload from './components/ImageUpload'
+// import ImageUpload from './components/ImageUpload'
 
 function App() {
-  const [state, dispatch] = useReducer(stateReducer, { 
-    portfolios: []
-   })
-  const [user, setUser] = useState(false)
-  const [error, setError] = useState(false)
-  // const url = "http://localhost:4000"
+  const [state, dispatch] = useReducer(stateReducer, { portfolios:[] })
+  const [user, setUser] = useState(UserContext) //false
+  const [error, setError] = useState(ErrorContext) //false
 
-  // let url = "http://localhost:4000"
-  let url = "https://free-space-api.herokuapp.com"
+  let url
+if (process.env.REACT_APP_ENV==='development') {
+   url = "http://localhost:4000"
+} else {
+   url = "https://free-space-api.herokuapp.com"
+}
   
-
   // at the moment all this is doing is console logging the database data.
   useEffect(() => {
     api.get('portfolios')
@@ -34,6 +36,7 @@ function App() {
           data: res.data
         })
       })
+      
   }, [])     
 
   useEffect(() => {
@@ -81,7 +84,6 @@ function App() {
         setError(err.response.data)
       })
   }
-
   const handleLogOut = (e) => {
     e.preventDefault()
     api.get(`/users/logout`, {
@@ -92,59 +94,32 @@ function App() {
         setError(false)
       })
   }
-
   const handleGoogleAuth = (e) => {
     window.location = `${url}/users/auth/google`
   }
 
-
   return (
     <>
-      <div>
-        {user ? (
-          <>
-            <h2>Logged in as {user.displayName || user.username}</h2>
-            <button onClick={handleLogOut}>Log Out</button>
-          </>
-        ) : (
-            <>
-              <h2>Register</h2>
-              <form onSubmit={handleSignUp}>
-                <label>Username</label>
-                <input />
-                <label>Password</label>
-                <input />
-                <button>Sign up</button>
-              </form>
-              <h2>Login</h2>
-              <form onSubmit={handleLogIn}>
-                <label>Username</label>
-                <input />
-                <label>Password</label>
-                <input />
-                <button>Sign In</button>
-              </form>
-              <button onClick={handleGoogleAuth}>Google Auth</button>
-              {error ? (
-                <div>
-                  <h4>{error.name}</h4>
-                  <p>{error.message}</p>
-                </div>
-              ) : (null)}
-            </>
-          )}
-      </div>
     <StateContext.Provider value={{state, dispatch}}>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/portfolios" component={Portfolios} />
-      <Route exact path="/portfolios/new" component={CreatePortfolio} />
-      <Route exact path="/sign_up" component={SignUp} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/imageupload" component={ImageUpload} />
-      <Route component={NoMatch} />
-    </Switch >
-    </StateContext.Provider >
+    <UserContext.Provider value={{user, setUser, handleLogIn, handleGoogleAuth, handleSignUp, handleLogOut}}>
+    <ErrorContext.Provider value={{error, setError}}>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/sign_up">SignUp</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/">LogOut</Link>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/portfolios" component={Portfolios} />
+          <Route exact path="/portfolios/new" component=    {CreatePortfolio} />
+          <Route exact path="/sign_up" component={SignUp} />
+          <Route exact path="/login" component={Login} />
+          <Route component={NoMatch} />
+        </Switch>
+      </ErrorContext.Provider>
+    </UserContext.Provider >
+    </StateContext.Provider>
     </>
   );
 }

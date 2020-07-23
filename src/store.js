@@ -1,6 +1,10 @@
 import { createContext } from "react"
 
+const UserContext = createContext(false)
+const ErrorContext = createContext(false)
 const StateContext = createContext()
+
+
 
 const stateReducer = (state, action) => {
     switch (action.type) {
@@ -23,4 +27,4 @@ const stateReducer = (state, action) => {
             
 }
 
-export { StateContext, stateReducer }
+export { StateContext, ErrorContext, UserContext, stateReducer }
