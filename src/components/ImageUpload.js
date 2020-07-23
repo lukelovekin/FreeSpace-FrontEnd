@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import '../App.css'
-import {Image} from 'cloudinary-react'
+// import {Image} from 'cloudinary-react'
 
 const ImageUpload = () => {
   const [imageUrl, setImageUrl] = useState(null)
