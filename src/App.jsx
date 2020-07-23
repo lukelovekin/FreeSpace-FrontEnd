@@ -11,6 +11,7 @@ import NoMatch from './components/NoMatch'
 import api from './api'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import ArtistProfile from './components/ArtistProfile'
 // import ImageUpload from './components/ImageUpload'
 
 function App() {
@@ -123,7 +124,8 @@ if (process.env.REACT_APP_ENV==='development') {
         <Switch>
           <Route exact path="/" component={Portfolios}/>
           {/* <Route exact path="/portfolios" component={Portfolios}/> */}
-          <Route exact path="/portfolios/new" component=    {CreatePortfolio} />
+          <Route exact path="/portfolios/new" component={CreatePortfolio} />
+          <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/login" component={Login} />
           <Route component={NoMatch} />
