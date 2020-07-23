@@ -39,8 +39,12 @@
 
 body {
   text-align: center;
+  color: white;
+  background-color: black;
 }
 
 button {
   margin: 10px;
 }
+
+
