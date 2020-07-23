@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {  UserContext, ErrorContext } from './store'
+import {  UserContext, ErrorContext } from '../store'
 
 export default function SignUp() {
 

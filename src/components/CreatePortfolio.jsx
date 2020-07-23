@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
-import { StateContext } from './store'
-import api from './api'
+import { StateContext } from '../store'
+import api from '../api'
 
 export default function CreatePortfolio(props) {
     const [id, setUid] = useState("")

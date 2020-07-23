@@ -5,12 +5,12 @@ import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
 import './App.css';
 // import Home from './Home'
-import Portfolios from './Portfolios'
-import CreatePortfolio from './CreatePortfolio'
-import NoMatch from './NoMatch'
+import Portfolios from './components/Portfolios'
+import CreatePortfolio from './components/CreatePortfolio'
+import NoMatch from './components/NoMatch'
 import api from './api'
-import Login from './Login'
-import SignUp from './SignUp'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 // import ImageUpload from './components/ImageUpload'
 
 function App() {
