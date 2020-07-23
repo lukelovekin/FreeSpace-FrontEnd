@@ -73,7 +73,7 @@ export default function ArtistProfile(props) {
 					<Bts.Image src="https://destinonegocio.com/br/wp-content/uploads/2015/05/windows-XP.jpg" rounded />
 				</Bts.Col>
 				<Bts.Col>
-					<p className="text-justify">{(data.length > 0)?data[0].bio:"No Bio"}</p>
+					<p className="text-justify">{(data.length > 0)?data[0].bio:"No bio"}</p>
 				</Bts.Col>
 			</Bts.Row>
 			<Bts.Row>
