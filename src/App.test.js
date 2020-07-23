@@ -1,14 +1,14 @@
-import React from 'react';
-// import { render } from '@testing-library/react';
-import Enzyme, { shallow } from "enzyme"
-import EnzymeAdapter from "enzyme-adapter-react-16"
-import App from './App';
+// import React from 'react';
+// // import { render } from '@testing-library/react';
+// import Enzyme, { shallow } from "enzyme"
+// import EnzymeAdapter from "enzyme-adapter-react-16"
+// import App from './App';
 
-Enzyme.configure({ adapter: new EnzymeAdapter()})
+// Enzyme.configure({ adapter: new EnzymeAdapter()})
 
-it('renders without crashing', () => {
-  const wrapper = shallow(<App/>)
-})
+// it('renders without crashing', () => {
+  // const wrapper = shallow(<App/>)
+// })
 
 // it('contains a div with the text "...."', () => {
 //   const wrapper = shallow(<App />)
