@@ -13,7 +13,7 @@ import Login from './Login'
 import SignUp from './SignUp'
 
 function App() {
-  const [state, dispatch] = useReducer(stateReducer, { portfolios:[]})
+  const [/*state,*/ dispatch] = useReducer(stateReducer, { portfolios:[]})
   const [user, setUser] = useState(UserContext) //false
   const [error, setError] = useState(ErrorContext) //false
 
