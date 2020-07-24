@@ -2,7 +2,6 @@ import React, { useReducer, useEffect, useState } from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
 import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
-
 import './App.css';
 // import Home from './Home'
 import Portfolios from './components/Portfolios'
@@ -12,6 +11,7 @@ import api from './api'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import ArtistProfile from './components/ArtistProfile'
+import Upload from './components/Upload'
 // import ImageUpload from './components/ImageUpload'
 
 function App() {
@@ -108,7 +108,7 @@ if (process.env.REACT_APP_ENV==='development') {
           {user ? (
               <>
                 <Link to="/"> Home </Link>
-                <Link to="/"> Portal </Link>
+                  <Link to="/artist_portal"> Portal </Link>
                 <button onClick={handleLogOut}>Log Out</button>
               </>
           ) : (
@@ -118,8 +118,7 @@ if (process.env.REACT_APP_ENV==='development') {
                 <button onClick={handleGoogleAuth}>Google Auth</button>
               </>
           )}
-          
-                
+                    
         </nav>
         <Switch>
           <Route exact path="/" component={Portfolios}/>
@@ -128,7 +127,9 @@ if (process.env.REACT_APP_ENV==='development') {
           <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/upload" component={Upload} />
           <Route component={NoMatch} />
+             
         </Switch>
       </ErrorContext.Provider>
     </UserContext.Provider >

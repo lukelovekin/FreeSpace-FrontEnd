@@ -1,24 +1,24 @@
-import React, { useState, useContext } from 'react'
-import { StateContext } from '../store'
-import api from '../api'
+import React, { /*useState, useContext*/ } from 'react'
+// import { StateContext } from '../store'
+// import api from '../api'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import Portfolio from './Portifolio'
 import { Link } from 'react-router-dom'
 
 export default function ArtistProfile(props) {
-    const [name, setName] = useState("")
-    const [bio, setBio] = useState("")
+    // const [name, setName] = useState("")
+    // const [bio, setBio] = useState("")
     // const [images, setImages] = useState([])
-    const [links, setLinks] = useState({
-        facebook: "",
-        instagram: "",
-        linkedin: "",
-        email: "",
-        twitter: "",
-        youtube: "",
-        other: ""
-    })
-    const {state, dispatch} = useContext(StateContext)
+    // const [links, setLinks] = useState({
+    //     facebook: "",
+    //     instagram: "",
+    //     linkedin: "",
+    //     email: "",
+    //     twitter: "",
+    //     youtube: "",
+    //     other: ""
+    // })
+    // const {state, dispatch} = useContext(StateContext)
 	
     return (
 		<div>

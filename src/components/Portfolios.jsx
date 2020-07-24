@@ -24,14 +24,20 @@ const { user } = useContext(UserContext)
                         </>
             )}
 
-            <h1>Portfolios Below, list or carousel</h1>
+            <h1>Portfolios Below, list or carousel,</h1>
             {
                 state.portfolios.map((item, index) => (
                     <article key={index}>
                         {console.log(item)}
                         <p>{item.name}</p>
                         <p>{item.bio}</p>
-                        {/* <p>{item.links}</p> */}
+                        {item.links.map((link) => (
+                            <div>
+                                <p>{link.facebook}</p>
+                                <p>{link.twitter}</p>
+                                <p>{link.instagram}</p>
+                            </div>
+                        ))}
                         <hr/>
 
 

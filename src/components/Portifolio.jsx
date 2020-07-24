@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import { StateContext } from '../store'
-import { Link } from 'react-router-dom'
-import { UserContext } from '../store'
+import React, { /*useContext*/ } from 'react'
+// import { StateContext } from '../store'
+// import { Link } from 'react-router-dom'
+// import { UserContext } from '../store'
 
 export default function Portfolio() {
-const {state /*, dispatch*/} = useContext(StateContext)
-const { user } = useContext(UserContext)
+// const {state /*, dispatch*/} = useContext(StateContext)
+// const { user } = useContext(UserContext)
 
     return (
         <div>

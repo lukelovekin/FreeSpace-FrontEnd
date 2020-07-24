@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { StateContext } from '../store'
 import api from '../api'
 import ImageUpload from './ImageUpload'
+import Upload from './Upload'
 
 export default function CreatePortfolio(props) {
     const [name, setName] = useState("")
@@ -71,8 +72,8 @@ export default function CreatePortfolio(props) {
         })
         api.post("portfolios", portfolio, {withCredentials: true})
             // .then(res => props.history.push('/portfolios'))
-            .then(res => props.history.push('/portfolios'))
-            .catch(err => console.log(err.response.data))
+            .then(res => props.history.push('/artist_portal'))
+            .catch(err => console.log(err.response))
     }
 
 
@@ -111,6 +112,7 @@ export default function CreatePortfolio(props) {
                 <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
                 
                 <ImageUpload />
+            
                 
                 <button>Create</button>
             </form>

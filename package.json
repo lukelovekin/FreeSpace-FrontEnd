@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "cloudinary-react": "^1.6.2",
     "cors": "^2.8.5",
+    "history": "^5.0.0",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",

@@ -6,6 +6,7 @@ const StateContext = createContext()
 
 
 
+
 const stateReducer = (state, action) => {
     switch (action.type) {
         case 'setPortfolios':
