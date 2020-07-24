@@ -29,7 +29,12 @@ const { user } = useContext(UserContext)
                 state.portfolios.map((item, index) => (
                     <article key={index}>
                         {console.log(item)}
-                        <p>{item.id}</p>
+                        <p>{item.name}</p>
+                        <p>{item.bio}</p>
+                        {/* <p>{item.links}</p> */}
+                        <hr/>
+
+
                     </article>
                 ))
             }
