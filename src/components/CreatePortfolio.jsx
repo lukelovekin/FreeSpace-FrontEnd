@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { StateContext } from '../store'
 import api from '../api'
 import ImageUpload from './ImageUpload'
-import Upload from './Upload'
+// import Upload from './Upload'
 
 export default function CreatePortfolio(props) {
     const [name, setName] = useState("")
