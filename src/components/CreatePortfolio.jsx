@@ -57,22 +57,22 @@ export default function CreatePortfolio(props) {
                 setLinks({ ...oldState, other: e.target.value })
                 break
             default: 
-                console.log("error")
-                
+                console.log("error")             
         }
     }
 
     const onSubmit = (e) => {
-        const portfolio = { name, bio }
+        const portfolio = { name, bio, links }
 
         e.preventDefault()
         dispatch({
             type: "setPortfolios",
             data: [...state.portfolios, portfolio]
         })
-        api.post("portfolios", portfolio)
+        api.post("portfolios", portfolio, {withCredentials: true})
+            // .then(res => props.history.push('/portfolios'))
             .then(res => props.history.push('/portfolios'))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err.response.data))
     }
 
 
