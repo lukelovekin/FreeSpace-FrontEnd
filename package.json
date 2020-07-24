@@ -10,6 +10,7 @@
     "cloudinary-react": "^1.6.2",
     "cors": "^2.8.5",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-google-login": "^5.1.21",
     "react-router-dom": "^5.2.0",
@@ -17,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI= react-scripts build",
     "dev": "REACT_APP_ENV='development' react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
