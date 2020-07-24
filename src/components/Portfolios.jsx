@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { StateContext } from './store'
+import { StateContext } from '../store'
 import { Link } from 'react-router-dom'
-import { UserContext } from './store'
+import { UserContext } from '../store'
 
 export default function Portfolios() {
 const {state /*, dispatch*/} = useContext(StateContext)
