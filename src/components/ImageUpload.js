@@ -12,13 +12,13 @@ const ImageUpload = () => {
     const formData = new FormData()
     formData.append('file', files[0])
     // replace this with your upload preset name
-    formData.append('upload_preset', 's1eejaxy');
+    formData.append('upload_preset', 'zuqwnlys');
     const options = {
       method: 'POST',
       body: formData,
     }
 
-    return fetch('https://api.Cloudinary.com/v1_1/dt8aodbvm/image/upload', options)
+    return fetch('https://api.Cloudinary.com/v1_1/dchrr8nak/image/upload', options)
       .then(res => res.json())
       .then(res => {
         setImageUrl(res.secure_url)
