@@ -55,6 +55,13 @@ export default function CreatePortfolio(props) {
         }
     }
 
+    let url
+    if (process.env.REACT_APP_ENV === 'development') {
+        url = "http://localhost:3000"
+    } else {
+        url = "https://free-space-api.herokuapp.com"
+    }
+
     const onSubmit = (e) => {
         const portfolio = { name, bio, links, imageUrl }
 
@@ -65,7 +72,7 @@ export default function CreatePortfolio(props) {
         })
         api.post("portfolios", portfolio, {withCredentials: true})
             // .then(res => props.history.push('/portfolios'))
-            .then(res => props.history.push('/portfolios'))
+            .then(res => window.location.href = `${url}/artist_portal`)
             .catch(err => console.log(err.respone))
     }
 
