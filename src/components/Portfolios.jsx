@@ -31,9 +31,9 @@ const { user } = useContext(UserContext)
                         {console.log(item)}
                         <p>{item.name}</p>
                         <p>{item.bio}</p>                  
-                        <p>{item.links[0].facebook}</p>
+                        {/* <p>{item.links[0].facebook}</p>
                         <p>{item.links[0].twitter}</p>
-                        <p>{item.links[0].instagram}</p>
+                        <p>{item.links[0].instagram}</p> */}
 
                         <hr/>
                     </article>
