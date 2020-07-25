@@ -72,7 +72,7 @@ export default function CreatePortfolio(props) {
         })
         api.post("portfolios", portfolio, {withCredentials: true})
             // .then(res => props.history.push('/portfolios'))
-            .then(res => window.location.href = `${url}/artist_portal`)
+            .then(res => window.location.href = `${url}/portfolios/artist_portal`)
             .catch(err => console.log(err))
     }
 
