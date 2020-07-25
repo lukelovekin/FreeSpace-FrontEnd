@@ -34,6 +34,7 @@ const { user } = useContext(UserContext)
                         {/* <p>{item.links[0].facebook}</p>
                         <p>{item.links[0].twitter}</p>
                         <p>{item.links[0].instagram}</p> */}
+                        <img src={item.imageUrl} alt="artist" style={{width: "300px"}}/>
 
                         <hr/>
                     </article>
