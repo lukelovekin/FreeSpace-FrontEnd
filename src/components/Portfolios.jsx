@@ -30,17 +30,12 @@ const { user } = useContext(UserContext)
                     <article key={index}>
                         {console.log(item)}
                         <p>{item.name}</p>
-                        <p>{item.bio}</p>
-                        {item.links.map((link) => (
-                            <div>
-                                <p>{link.facebook}</p>
-                                <p>{link.twitter}</p>
-                                <p>{link.instagram}</p>
-                            </div>
-                        ))}
+                        <p>{item.bio}</p>                  
+                        <p>{item.links[0].facebook}</p>
+                        <p>{item.links[0].twitter}</p>
+                        <p>{item.links[0].instagram}</p>
+
                         <hr/>
-
-
                     </article>
                 ))
             }

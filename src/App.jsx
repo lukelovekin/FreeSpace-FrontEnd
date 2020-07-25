@@ -99,6 +99,8 @@ if (process.env.REACT_APP_ENV==='development') {
     window.location = `${url}/users/auth/google`
   }
 
+    // 'https://api.Cloudinary.com/v1_1/danpozzvi/image/upload'
+
   return (
     <>
     <StateContext.Provider value={{state, dispatch}}>

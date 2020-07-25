@@ -13,6 +13,7 @@ const ImageUpload = () => {
     formData.append('file', files[0])
     // replace this with your upload preset name
     formData.append('upload_preset', 'zuqwnlys');
+    
     const options = {
       method: 'POST',
       body: formData,
@@ -26,7 +27,6 @@ const ImageUpload = () => {
         })
       .catch(err => console.log(err))
   }
-
 
     return (
       <main className="App">
@@ -44,12 +44,11 @@ const ImageUpload = () => {
         <section className="right-side">
           <p>The resulting image will be displayed here</p>
           {imageUrl && (
-            <img src={imageUrl} alt={imageAlt} className="displayed-image"/>
+            <img src={imageUrl} alt={imageAlt} className="displayed-image" style={{width: "300px"}}/>
           )}
         </section>
       </main>
     )
   }
-
 
   export default ImageUpload
