@@ -1,16 +1,43 @@
-import React, { /*useContext*/ } from 'react'
-// import { StateContext } from '../store'
+import React, { useContext } from 'react'
+import  { StateContext } from '../store'
 // import { Link } from 'react-router-dom'
 // import { UserContext } from '../store'
 
-export default function Portfolio() {
-// const {state /*, dispatch*/} = useContext(StateContext)
-// const { user } = useContext(UserContext)
+export default function Portfolio(props) {
+    const { port_id } = props.match.params
+    const {state} = useContext(StateContext)
+    // const { user } = useContext(UserContext)
+    const portfolio = state.portfolios[port_id]
 
-    return (
+    return ( 
         <div>
-            <h1>Portfolios Below, list or carousel</h1>
-			dasjdkasjdjakl
+         {portfolio ? (
+             <>
+                { portfolio.name }
+                < br />
+
+                { portfolio.bio }
+                < br />
+
+                <img src={portfolio.imageUrl} alt="pic" style={{ width: "300px" }} />
+                <br />
+
+                <ul>
+                {
+                    Object.entries(portfolio.links[0]).map((link, i) => {
+                        if (link[1])
+                            return <li>{link[0]}, {link[1]}</li>
+
+                    })
+                }
+                </ul>
+
+            </>
+         ) : (
+            null
+         ) }      
         </div>
+        
     )
 }
+
