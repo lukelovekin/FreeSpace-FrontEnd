@@ -13,6 +13,7 @@ import SignUp from './components/SignUp'
 import ArtistProfile from './components/ArtistProfile'
 // import Upload from './components/Upload'
 // import ImageUpload from './components/ImageUpload'
+import Portfolio from './components/Portifolio'
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, { portfolios:[] })
@@ -109,7 +110,7 @@ if (process.env.REACT_APP_ENV==='development') {
         <nav>
           {user ? (
               <>
-                <Link to="/"> Home </Link>
+                <Link to="/portfolios"> Home </Link>
                   <Link to="/artist_portal"> Portal </Link>
                 <button onClick={handleLogOut}>Log Out</button>
               </>
@@ -123,12 +124,12 @@ if (process.env.REACT_APP_ENV==='development') {
                     
         </nav>
         <Switch>
-          <Route exact path="/" component={Portfolios}/>
-          {/* <Route exact path="/portfolios" component={Portfolios}/> */}
-          <Route exact path="/portfolios/new" component={CreatePortfolio} />
-          <Route exact path="/artist_portal" component={ArtistProfile} />
-          <Route exact path="/sign_up" component={SignUp} />
+          <Route exact path="/portfolios" component={Portfolios}/>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/sign_up" component={SignUp} />
+          <Route exact path="/artist_portal" component={ArtistProfile} />
+          <Route exact path="/portfolios/new" component={CreatePortfolio} />
+          <Route exact path="/portfolios/:port_id" component={Portfolio}/>
           {/* <Route exact path="/upload" component={Upload} /> */}
           <Route component={NoMatch} />
              
