@@ -13,6 +13,7 @@ import SignUp from './components/SignUp'
 import ArtistProfile from './components/ArtistProfile'
 // import Upload from './components/Upload'
 // import ImageUpload from './components/ImageUpload'
+import About from './components/About'
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, { portfolios:[] })
@@ -129,6 +130,7 @@ if (process.env.REACT_APP_ENV==='development') {
           <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/about" component={About} />
           {/* <Route exact path="/upload" component={Upload} /> */}
           <Route component={NoMatch} />
              
