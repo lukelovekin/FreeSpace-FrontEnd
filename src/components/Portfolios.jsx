@@ -24,22 +24,18 @@ const { user } = useContext(UserContext)
                         </>
             )}
 
-            <h1>Portfolios Below, list or carousel,</h1>
+            <h1>Portfolios Below, list, carousel, etc whatever</h1>
+            <ul>
             {
                 state.portfolios.map((item, index) => (
-                    <article key={index}>
+                    <li key={index}>
                         {console.log(item)}
-                        <p>{item.name}</p>
-                        <p>{item.bio}</p>                  
-                        {/* <p>{item.links[0].facebook}</p>
-                        <p>{item.links[0].twitter}</p>
-                        <p>{item.links[0].instagram}</p> */}
-                        <img src={item.imageUrl} alt="artist" style={{width: "300px"}}/>
-
-                        <hr/>
-                    </article>
+                        <Link to={`/portfolios/${index}`}><img src={item.imageUrl} alt="artist" style={{ width: "300px" }}/><br/>{item.name}</Link>
+                        <hr style={{width: "50%"}}/>               
+                    </li>
                 ))
             }
+            </ul>
         </div>
     )
 }
