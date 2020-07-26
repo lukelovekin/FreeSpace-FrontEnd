@@ -111,7 +111,8 @@ if (process.env.REACT_APP_ENV==='development') {
           {user ? (
               <>
                 <Link to="/"> Home </Link>
-                  <Link to="/artist_portal"> Portal </Link>
+                <Link to="/artist_portal"> Portal </Link>
+                <Link to ="/about">About</Link>
                 <button onClick={handleLogOut}>Log Out</button>
               </>
           ) : (
