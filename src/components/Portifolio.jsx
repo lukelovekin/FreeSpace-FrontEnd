@@ -21,18 +21,22 @@ export default function Portfolio(props) {
                 { portfolio.bio }
                 < br />
 
-                <img src={portfolio.imageUrl} alt="pic" style={{ width: "300px" }} />
-                <br />
-
                 <ul>
                 {
                     Object.entries(portfolio.links[0]).map((link, i) => {
                         if (link[1])
-                            return <li>{link[0]}, {link[1]}</li>
-
+                        return <li>{link[0]}, {link[1]}</li>
+                        
                     })
                 }
                 </ul>
+                
+                {portfolio.imageUrl && (
+                    portfolio.imageUrl.map((pic) => (
+                        <img src={pic} alt='picture' className="displayed-image" style={{ width: "300px" }} />
+                    ))
+                )}
+                <br />
             </>
          ) : (
             null

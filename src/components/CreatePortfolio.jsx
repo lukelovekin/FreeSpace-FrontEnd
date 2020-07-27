@@ -15,7 +15,7 @@ export default function CreatePortfolio(props) {
         other: ""
     })
     const {state, dispatch} = useContext(StateContext)
-    const [imageUrl, setImageUrl] = useState(null)
+    const [imageUrl, setImageUrl] = useState([])
     const [imageAlt, setImageAlt] = useState(null)
     const oldState = links
 
@@ -91,7 +91,7 @@ export default function CreatePortfolio(props) {
         return fetch('https://api.Cloudinary.com/v1_1/dchrr8nak/image/upload', options)
             .then(res => res.json())
             .then(res => {
-                setImageUrl(res.secure_url)
+                setImageUrl([...imageUrl, res.secure_url])
                 setImageAlt(`An image of ${res.original_filename}`)
             })
             .catch(err => console.log(err))
@@ -104,7 +104,10 @@ export default function CreatePortfolio(props) {
             <section className="right-side">
                 <p>The resulting image will be displayed here</p>
                 {imageUrl && (
-                    <img src={imageUrl} alt={imageAlt} className="displayed-image" style={{ width: "300px" }} />
+
+                    imageUrl.map((pic) => (
+                         <img src={pic} alt={imageAlt} className="displayed-image" style={{ width: "300px" }} />
+                    ))
                 )}
             </section>
 
