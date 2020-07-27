@@ -31,32 +31,27 @@ export default function ArtistProfile(props) {
 				<h1>Your Portfolio/s</h1>
 			</div>
 
-			<div className="row">
-				<div>
+			<div>
 				{
 				indexedPortfolio.map((item, index) => (
-					<div className="input-group">
+					<div>
 						<input type="text" value={`${url}/${item}`} disabled="disabled" />
 						<CopyToClipboard text={`${url}/${item}`}>
 							<button>Copy Link</button>
 						</CopyToClipboard>
-						<p>
-							<Link to={`/portfolios/${item}`}><img src={state.portfolios[item].imageUrl[0]} alt="main" style={{ width: "300px" }} /></Link>
-						</p>
+
+						
+
+						<div>
+							<Link to={`/portfolios/${item}`}>
+								<iframe width="500" height="300" src={`/portfolios/${item}`} title="portfolio page" frameborder="0" allowfullscreen></iframe><br />{state.portfolios[item].name}</Link>
+						</div>
 					</div>
+
+
 
 				))
 				}
-				</div>
-
-					{/* <img src={item.imageUrl[0]} alt="artist" style={{ width: "300px" }} /><br />{item.name}</Link> */}
-
-					
-                
-				{/* <div>
-					<Link to="/portfolio/1"><button type="button">View</button></Link>
-					<Link to="/portfolio/edit/1"><button type="button">Edit</button></Link>
-				</div> */}
 			</div>
 
 		</div>
