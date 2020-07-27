@@ -47,4 +47,12 @@ button {
   margin: 10px;
 }
 
+nav button {
+  float: right;
+  margin: 20px;
+}
 
+nav a {
+  float: left;
+  margin: 10px;
+}
