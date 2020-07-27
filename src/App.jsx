@@ -107,23 +107,22 @@ if (process.env.REACT_APP_ENV==='development') {
     <StateContext.Provider value={{state, dispatch}}>
     <UserContext.Provider value={{user, setUser, handleLogIn, handleGoogleAuth, handleSignUp, handleLogOut}}>
     <ErrorContext.Provider value={{error, setError}}>
+        
         <nav>
+          <Link to="/"> Home </Link>
+          <Link to ="/about">About</Link>
           {user ? (
-              <>
-                <Link to="/"> Home </Link>
-                <Link to="/artist_portal"> Portal </Link>
-                <Link to ="/about">About</Link>
-                <button onClick={handleLogOut}>Log Out</button>
-              </>
+            <>
+              <Link to="/artist_portal"> Portal </Link>
+              <button onClick={handleLogOut}>Log Out</button>
+            </>
           ) : (
-              <>
-                {/* <Link to="/sign_up">SignUp</Link>
-                <Link to="/login">Login</Link> */}
-                <button onClick={handleGoogleAuth}>Google Auth</button>
-              </>
-          )}
-                    
+            <>  
+              <button onClick={handleGoogleAuth}>Login with Google</button>
+            </>
+          )}        
         </nav>
+        
         <Switch>
           <Route exact path="/" component={Portfolios}/>
           <Route exact path="/login" component={Login} />
