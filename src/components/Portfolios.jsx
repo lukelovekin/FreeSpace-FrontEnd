@@ -3,9 +3,12 @@ import { StateContext } from '../store'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../store'
 
+
 export default function Portfolios() {
 const {state /*, dispatch*/} = useContext(StateContext)
 const { user } = useContext(UserContext)
+
+
 
     return (
         <div>
@@ -33,7 +36,7 @@ const { user } = useContext(UserContext)
                         {console.log(item)}
 
 
-                        <Link to={`/portfolios/${index}`}><img src={item.imageUrl[0]} alt="artist" style={{ width: "300px" }}/><br/>{item.name}</Link>
+                        <Link to={`/portfolios/${item._id}`}><img src={item.imageUrl[0]} alt="artist" style={{ width: "300px" }}/><br/>{item.name}</Link>
 
                         <hr style={{width: "50%"}}/>               
                     </li>

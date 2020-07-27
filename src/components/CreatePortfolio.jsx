@@ -100,7 +100,6 @@ export default function CreatePortfolio(props) {
 
     return (
         <div>
-
             <section className="right-side">
                 <p>The resulting image will be displayed here</p>
                 {imageUrl && (
