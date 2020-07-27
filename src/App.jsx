@@ -33,7 +33,7 @@ if (process.env.REACT_APP_ENV==='development') {
   useEffect(() => {
     api.get('portfolios')
       .then(res => {
-        console.log(res)
+        // console.log(res.data)
         // update portfolios in the reducer with the value res.data
         dispatch({
           type: 'setPortfolios',
@@ -131,7 +131,8 @@ if (process.env.REACT_APP_ENV==='development') {
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/portfolios/new" component={CreatePortfolio} />
-          <Route exact path="/portfolios/:port_id" component={Portfolio}/>
+          <Route exact path="/portfolios/:port_id" component={Portfolio} />
+          <Route exact path="/portfolios/:port_name" component={Portfolio} />
           {/* <Route exact path="/upload" component={Upload} /> */}
           <Route component={NoMatch} />
              

@@ -113,7 +113,7 @@ export default function CreatePortfolio(props) {
 
             <form onSubmit={onSubmit}>
 
-                <h3>Upload an image</h3>
+                <h3>Upload an image (first image will be display pic)</h3>
                 <input type="file" />
                 <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
                 {/* <button type="button" className="btn widget-btn">Upload Via Widget</button> */}

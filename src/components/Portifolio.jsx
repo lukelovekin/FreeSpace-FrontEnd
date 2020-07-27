@@ -33,7 +33,7 @@ export default function Portfolio(props) {
                 
                 {portfolio.imageUrl && (
                     portfolio.imageUrl.map((pic) => (
-                        <img src={pic} alt='picture' className="displayed-image" style={{ width: "300px" }} />
+                        <img src={pic} alt='artist' className="displayed-image" style={{ width: "300px" }} />
                     ))
                 )}
                 <br />
