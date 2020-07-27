@@ -11,7 +11,9 @@ export default function Portfolio(props) {
 
     return ( 
         <div>
-         {portfolio ? (
+        
+        {/* This ternary operate fixes a React floor that doesnt find props immediately after a render */}
+        {portfolio ? (
              <>
                 { portfolio.name }
                 < br />
@@ -31,7 +33,6 @@ export default function Portfolio(props) {
                     })
                 }
                 </ul>
-
             </>
          ) : (
             null
