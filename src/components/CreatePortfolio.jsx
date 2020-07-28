@@ -71,8 +71,8 @@ export default function CreatePortfolio(props) {
             data: [...state.portfolios, portfolio]
         })
         api.post("portfolios", portfolio, {withCredentials: true})
-            // .then(res => props.history.push('/portfolios'))
-            .then(res => window.location.href = `${url}/artist_portal`)
+            //.then(res => props.history.push('/portfolios'))
+            .then(res => window.location.href = `${url}`)
             .catch(err => console.log(err))
     }
 
@@ -100,7 +100,6 @@ export default function CreatePortfolio(props) {
 
     return (
         <div>
-
             <section className="right-side">
                 <p>The resulting image will be displayed here</p>
                 {imageUrl && (
@@ -111,7 +110,7 @@ export default function CreatePortfolio(props) {
                 )}
             </section>
 
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} class="form-container">
 
                 <h3>Upload an image (first image will be display pic)</h3>
                 <input type="file" />
@@ -119,35 +118,45 @@ export default function CreatePortfolio(props) {
                 {/* <button type="button" className="btn widget-btn">Upload Via Widget</button> */}
 
                 <br/>
-
-                <label htmlFor="name">name</label>
-                <input onChange={onChange} value={name} type="text" name="name" id="name" />
-
-                <label htmlFor="facebook">Facebook</label>
-                <input onChange={onChange} value={links.facebook} type="text" name="facebook" id="facebook" />
-
-                <label htmlFor="instagram">Instagram</label>
-                <input onChange={onChange} value={links.instagram} type="text" name="instagram" id="instagram" />
-
-                <label htmlFor="linkedin">Linkedin</label>
-                <input onChange={onChange} value={links.linkedin} type="text" name="linkedin" id="linkedin" />
-
-                <label htmlFor="email">email</label>
-                <input onChange={onChange} value={links.email} type="text" name="email" id="email" />
-
-                <label htmlFor="twitter">twitter</label>
-                <input onChange={onChange} value={links.twitter} type="text" name="twitter" id="twitter" />
-
-                <label htmlFor="youtube">youtube</label>
-                <input onChange={onChange} value={links.youtube} type="text" name="youtube" id="youtube" />
-
-                <label htmlFor="other">other</label>
-                <input onChange={onChange} value={links.other} type="text" name="other" id="other" />
-
-                <label htmlFor="bio">bio</label>
-                <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
-                
-                <button>Create</button>
+                <div class="input-group">
+                    <label htmlFor="name">Name</label>
+                    <input onChange={onChange} value={name} type="text" name="name" id="name" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="facebook">Facebook</label>
+                    <input onChange={onChange} value={links.facebook} type="text" name="facebook" id="facebook" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="instagram">Instagram</label>
+                    <input onChange={onChange} value={links.instagram} type="text" name="instagram" id="instagram" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="linkedin">Linkedin</label>
+                    <input onChange={onChange} value={links.linkedin} type="text" name="linkedin" id="linkedin" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="email">Email</label>
+                    <input onChange={onChange} value={links.email} type="text" name="email" id="email" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="twitter">Twitter</label>
+                    <input onChange={onChange} value={links.twitter} type="text" name="twitter" id="twitter" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="youtube">Youtube</label>
+                    <input onChange={onChange} value={links.youtube} type="text" name="youtube" id="youtube" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="other">Other</label>
+                    <input onChange={onChange} value={links.other} type="text" name="other" id="other" />
+                </div>
+                <div class="input-group">
+                    <label htmlFor="bio">Bio</label>
+                    <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
+                </div>
+                <div class="input-group">    
+                    <button type="submit" class="btn">Create</button>
+                </div>
             </form>
 
         </div>
