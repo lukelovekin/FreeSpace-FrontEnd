@@ -8,19 +8,19 @@ export default function Portfolios() {
 const {state /*, dispatch*/} = useContext(StateContext)
 const { user } = useContext(UserContext)
 
-    const onChange = (e) => {
-        switch (e.target.name) {
-            case "artist_name":
-                break
-            case "portfolio_type":
-                break;
-            case "order":
-                console.log("Aqui trocou oredem");
-                break;
-            default: 
-                console.log("error")             
-        }
-    }
+    // const onChange = (e) => {
+    //     switch (e.target.name) {
+    //         case "artist_name":
+    //             break
+    //         case "portfolio_type":
+    //             break;
+    //         case "order":
+    //             console.log("Aqui trocou oredem");
+    //             break;
+    //         default: 
+    //             console.log("error")             
+    //     }
+    // }
     
     return (
         <div>
@@ -39,32 +39,8 @@ const { user } = useContext(UserContext)
                         </>
             )}
 
-            <h1>Portfolios Below, list, carousel, etc whatever</h1>
-            <form className="filters">
-                <div class="input-group">
-                    <label htmlFor="artist_name">Artist Name</label>
-                    <input onChange={onChange} type="text" name="artist_name" id="artist_name" />
-                </div>
-                <div class="input-group">
-                    <label htmlFor="portfolio_type">Portfolio Type</label>
-                    <select onChange={onChange} name="portfolio_type" id="portfolio_type">
-                        <option value="">No Order</option>
-                        <option value="artist">Artists</option>
-                        <option value="photo">Photographer</option>
-                        <option value="designer">Designer</option>
-                        <option value="others">Others</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label htmlFor="order">Order</label>
-                    <select onChange={onChange} name="order" id="order">
-                        <option value="">No Order</option>
-                        <option value="most-views">Most Views</option>
-                        <option value="recent">Most Recents</option>
-                    </select>
-                </div>
-            </form>
-            <ul className="portfolio-container">
+            <ul>
+                
             {
                 state.portfolios.map((item, index) => (
                     <li key={index}>

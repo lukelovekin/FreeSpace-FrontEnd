@@ -10,7 +10,7 @@ import SignUp from './components/SignUp'
 import NoMatch from './components/NoMatch'
 import Portfolio from './components/Portifolio'
 import Portfolios from './components/Portfolios'
-import ArtistProfile from './components/ArtistPortal'
+import ArtistProfile from './components/ArtistProfile'
 import EditPortfolio from './components/EditPortfolio'
 import CreatePortfolio from './components/CreatePortfolio'
 
