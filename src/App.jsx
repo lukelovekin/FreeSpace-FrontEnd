@@ -3,18 +3,16 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
 import './App.css';
-// import Home from './Home'
-import Portfolios from './components/Portfolios'
-import CreatePortfolio from './components/CreatePortfolio'
-import NoMatch from './components/NoMatch'
 import api from './api'
 import Login from './components/Login'
-import SignUp from './components/SignUp'
-import ArtistProfile from './components/ArtistProfile'
-// import Upload from './components/Upload'
-// import ImageUpload from './components/ImageUpload'
 import About from './components/About'
+import SignUp from './components/SignUp'
+import NoMatch from './components/NoMatch'
 import Portfolio from './components/Portifolio'
+import Portfolios from './components/Portfolios'
+import ArtistProfile from './components/ArtistPortal'
+import EditPortfolio from './components/EditPortfolio'
+import CreatePortfolio from './components/CreatePortfolio'
 
 
 function App() {
@@ -121,8 +119,7 @@ if (process.env.REACT_APP_ENV==='development') {
                 <Link to="/login">Login</Link> */}
                 <button onClick={handleGoogleAuth}>Google Auth</button>
               </>
-          )}
-                    
+          )}            
         </nav>
         <Switch>
           <Route exact path="/" component={Portfolios}/>
@@ -131,11 +128,11 @@ if (process.env.REACT_APP_ENV==='development') {
           <Route exact path="/sign_up" component={SignUp} />
           <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/portfolios/new" component={CreatePortfolio} />
+          <Route exact path="/portfolios/edit" component={EditPortfolio} />
           <Route exact path="/portfolios/:port_id" component={Portfolio} />
-          <Route exact path="/portfolios/:port_name" component={Portfolio} />
-          {/* <Route exact path="/upload" component={Upload} /> */}
+          {/* Sprinkle */}
+          {/* <Route exact path="/portfolios/:port_name" component={Portfolio} /> */}
           <Route component={NoMatch} />
-             
         </Switch>
       </ErrorContext.Provider>
     </UserContext.Provider >
