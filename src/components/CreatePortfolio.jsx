@@ -120,8 +120,6 @@ export default function CreatePortfolio(props) {
     return (
         <div>
             <section className="right-side">
-
-                <p>The resulting image will be displayed here</p>
                 {portfolio.imageUrl ? (
                     portfolio.imageUrl.map((item, i) => (
                         <img src={item} alt="" key={i} style={{ width: "300px" }}/>
