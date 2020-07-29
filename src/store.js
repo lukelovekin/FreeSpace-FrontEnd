@@ -7,6 +7,7 @@ const StateContext = createContext()
 
 
 
+
 const stateReducer = (state, action) => {
     switch (action.type) {
         case 'setPortfolios':
@@ -14,14 +15,6 @@ const stateReducer = (state, action) => {
                 ...state,
                 portfolios: action.data
             }
-        // case 'setUser':
-        //     return {
-        //         user: action.data
-        //     }
-        // case 'setError':
-        //     return {
-        //         error: action.data
-        //     }
         default:
             return state
     }

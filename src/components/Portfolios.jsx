@@ -7,20 +7,10 @@ import { UserContext } from '../store'
 export default function Portfolios() {
 const {state /*, dispatch*/} = useContext(StateContext)
 const { user } = useContext(UserContext)
-
-    // const onChange = (e) => {
-    //     switch (e.target.name) {
-    //         case "artist_name":
-    //             break
-    //         case "portfolio_type":
-    //             break;
-    //         case "order":
-    //             console.log("Aqui trocou oredem");
-    //             break;
-    //         default: 
-    //             console.log("error")             
-    //     }
-    // }
+    
+    const newPage = () => {
+        window.location.href = `portfolios/new`
+    }
     
     return (
         <div>
@@ -28,7 +18,7 @@ const { user } = useContext(UserContext)
                     <>
                         <h1>Welcome to Freespace</h1>
                         <h2>Logged in as {user.displayName || user.username}</h2>
-                        <Link to='/portfolios/new'><button><h2>Create a Portfolio</h2></button></Link>
+                    <button onClick={newPage}><h4>Create a Portfolio</h4></button>
                     </>
             ) : (
                     <>
