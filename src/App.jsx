@@ -4,14 +4,12 @@ import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
 
 import './App.css';
 import api from './api'
-import Login from './components/Login'
 import About from './components/About'
-import SignUp from './components/SignUp'
+// import SignUp from './components/SignUp'
 import NoMatch from './components/NoMatch'
 import Portfolio from './components/Portifolio'
 import Portfolios from './components/Portfolios'
 import ArtistProfile from './components/ArtistPortal'
-import EditPortfolio from './components/EditPortfolio'
 import CreatePortfolio from './components/CreatePortfolio'
 
 
@@ -40,7 +38,6 @@ if (process.env.REACT_APP_ENV==='development') {
       })
       
   }, [])     
-
   useEffect(() => {
     api.get(`/users/me`, {
       withCredentials: true
@@ -49,7 +46,6 @@ if (process.env.REACT_APP_ENV==='development') {
         setUser(result.data)
       })
   }, [])
-
   const handleSignUp = (e) => {
     e.preventDefault()
 
@@ -123,22 +119,19 @@ if (process.env.REACT_APP_ENV==='development') {
         </nav>
         <Switch>
           <Route exact path="/" component={Portfolios}/>
-          <Route exact path="/login" component={Login} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/sign_up" component={SignUp} />
+          {/* <Route exact path="/sign_up" component={SignUp} /> */}
           <Route exact path="/artist_portal" component={ArtistProfile} />
           <Route exact path="/portfolios/new" component={CreatePortfolio} />
-          <Route exact path="/portfolios/edit" component={EditPortfolio} />
+          <Route exact path="/portfolios/:port_id/edit" component={CreatePortfolio} />
           <Route exact path="/portfolios/:port_id" component={Portfolio} />
-          {/* Sprinkle */}
-          {/* <Route exact path="/portfolios/:port_name" component={Portfolio} /> */}
           <Route component={NoMatch} />
         </Switch>
       </ErrorContext.Provider>
     </UserContext.Provider >
     </StateContext.Provider>
     </>
-  );
+  )
 }
 
 export default App;

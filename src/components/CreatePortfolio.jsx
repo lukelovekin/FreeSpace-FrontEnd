@@ -1,23 +1,31 @@
-import React, { useState, useContext } from 'react'
-import { StateContext } from '../store'
+import React, { useState, useContext, useEffect } from 'react'
+import { StateContext, /*UserContext,*/  } from '../store'
 import api from '../api'
 
 export default function CreatePortfolio(props) {
     const [name, setName] = useState("")
     const [bio, setBio] = useState("")
     const [links, setLinks] = useState({
-        facebook: "",
-        instagram: "",
-        linkedin: "",
-        email: "",
-        twitter: "",
-        youtube: "",
-        other: ""
+        facebook: undefined,
+        instagram: undefined,
+        linkedin: undefined,
+        email: undefined,
+        twitter: undefined,
+        youtube: undefined,
+        other: undefined
     })
     const {state, dispatch} = useContext(StateContext)
     const [imageUrl, setImageUrl] = useState([])
     const [imageAlt, setImageAlt] = useState(null)
+    // const {user} = useContext(UserContext)
     const oldState = links
+
+    let [portfolio, setPortfolio] = useState({})
+
+    useEffect(() => {
+        api.get(`portfolios/${props.match.params.port_id}`)
+        .then(res => setPortfolio(res.data))
+    }, [props.match.params.port_id])
 
     const onChange = (e) => {
         switch (e.target.name) {
@@ -70,8 +78,20 @@ export default function CreatePortfolio(props) {
             type: "setPortfolios",
             data: [...state.portfolios, portfolio]
         })
-        api.post("portfolios", portfolio, {withCredentials: true})
-            //.then(res => props.history.push('/portfolios'))
+        api.post("portfolios", portfolio, { withCredentials:true })
+            .then(res => window.location.href = `${url}/artist_portal`)
+                .catch(err => console.log(err))
+    }
+
+    const onEdit = (e) => {
+        const portfolio = { name, bio, links, imageUrl }
+
+        e.preventDefault()
+        dispatch({
+            type: "setPortfolios",
+            data: [...state.portfolios, portfolio]
+        })
+        api.patch(`portfolios/${props.match.params.port_id}`, portfolio, { withCredentials: true })
             .then(res => window.location.href = `${url}/artist_portal`)
             .catch(err => console.log(err))
     }
@@ -97,66 +117,89 @@ export default function CreatePortfolio(props) {
             .catch(err => console.log(err))
     }
 
-
     return (
         <div>
             <section className="right-side">
+
+                <p>The resulting image will be displayed here</p>
+                {portfolio.imageUrl ? (
+                    portfolio.imageUrl.map((item, i) => (
+                        <img src={item} alt="" key={i} style={{ width: "300px" }}/>
+                    ))
+                ) : (
+                        null
+                    )}
                 {imageUrl && (
-                    imageUrl.map((pic) => (
-                         <img src={pic} alt={imageAlt} className="displayed-image" style={{ width: "300px" }} />
+                    imageUrl.map((pic, i) => (
+                         <img src={pic} alt={imageAlt} className="displayed-image" style={{ width: "300px" }} key={i} />
                     ))
                 )}
             </section>
 
-            <form onSubmit={onSubmit} class="form-container">
-
+            <form onSubmit={onSubmit} className="form-container">
                 <h3>Upload an image (first image will be display pic)</h3>
                 <input type="file" />
                 <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
-                {/* <button type="button" className="btn widget-btn">Upload Via Widget</button> */}
 
                 <br/>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="name">Name</label>
-                    <input onChange={onChange} value={name} type="text" name="name" id="name" />
+                    <input onChange={onChange} value={name} type="text" name="name" id="name" placeholder={portfolio.name} />
                 </div>
-                <div class="input-group">
+                {/* Extremely DRYer method just doesnt quite work  */}
+                {/* {
+                    Object.entries(portfolio.links ? portfolio.links[0] : links).map((link, i) => {
+                            return <div className="input-group" key={i}>
+                                        <label htmlFor={link}>{link}</label>
+                                        <input onChange={onChange} value={links.link} type="text" name={link} id={link} placeholder={portfolio.link} />
+                                    </div>
+                    })
+                } */}
+                <div className="input-group">
                     <label htmlFor="facebook">Facebook</label>
-                    <input onChange={onChange} value={links.facebook} type="text" name="facebook" id="facebook" />
+                    <input onChange={onChange} value={links.facebook} type="text" name="facebook" id="facebook" placeholder={portfolio.links ? portfolio.links[0].facebook : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="instagram">Instagram</label>
-                    <input onChange={onChange} value={links.instagram} type="text" name="instagram" id="instagram" />
+                            <input onChange={onChange} value={links.instagram} type="text" name="instagram" id="instagram" placeholder={portfolio.links ? portfolio.links[0].instagram : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="linkedin">Linkedin</label>
-                    <input onChange={onChange} value={links.linkedin} type="text" name="linkedin" id="linkedin" />
+                    <input onChange={onChange} value={links.linkedin} type="text" name="linkedin" id="linkedin" placeholder={portfolio.links ? portfolio.links[0].linkedin : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="email">Email</label>
-                    <input onChange={onChange} value={links.email} type="text" name="email" id="email" />
+                            <input onChange={onChange} value={links.email} type="text" name="email" id="email" placeholder={portfolio.links ? portfolio.links[0].email : null}/>
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="twitter">Twitter</label>
-                    <input onChange={onChange} value={links.twitter} type="text" name="twitter" id="twitter" />
+                            <input onChange={onChange} value={links.twitter} type="text" name="twitter" id="twitter" placeholder={portfolio.links ? portfolio.links[0].twitter : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="youtube">Youtube</label>
-                    <input onChange={onChange} value={links.youtube} type="text" name="youtube" id="youtube" />
+                            <input onChange={onChange} value={links.youtube} type="text" name="youtube" id="youtube" placeholder={portfolio.links ? portfolio.links[0].youtube : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="other">Other</label>
-                    <input onChange={onChange} value={links.other} type="text" name="other" id="other" />
+                            <input onChange={onChange} value={links.other} type="text" name="other" id="other" placeholder={portfolio.links ? portfolio.links[0].other : null} />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                     <label htmlFor="bio">Bio</label>
-                    <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" />
+                            <textarea onChange={onChange} value={bio} type="text" name="bio" id="bio" placeholder={portfolio.bio} />
                 </div>
-                <div class="input-group">    
-                    <button type="submit" class="btn">Create</button>
-                </div>
-            </form>
 
+                {portfolio.name ? (
+                    <div className="input-group">    
+                    <   button  className="btn" onClick={onEdit}>Submit</button>
+                    </div>
+
+                ) : (
+                    <div className="input-group">
+                        <button className="btn" onClick={onSubmit}>Create</button>
+                    </div>
+                )}
+
+            </form>
         </div>
     )
 }

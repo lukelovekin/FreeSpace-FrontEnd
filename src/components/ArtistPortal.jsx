@@ -34,16 +34,11 @@ export default function ArtistProfile(props) {
 							<button>Copy Link</button>
 						</CopyToClipboard>
 
-						<Link to={'/portfolios/edit'}><button>Edit</button> </Link>
-
 						<div>
 							<Link to={`/portfolios/${item._id}`}>
 								<iframe width="500" height="300" src={`/portfolios/${item._id}`} title="portfolio page" frameBorder="0" allowFullScreen></iframe><br />{item.name}</Link>
 						</div>
 					</div>
-
-
-
 				))
 				}
 			</div>

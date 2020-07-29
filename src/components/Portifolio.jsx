@@ -1,15 +1,12 @@
 import React, { useContext } from 'react'
 import  { StateContext, UserContext } from '../store'
 import api from '../api'
-// import { Link } from 'react-router-dom'
-// import { UserContext } from '../store'
 
 export default function Portfolio(props) {
     const { port_id } = props.match.params
     const {state} = useContext(StateContext)
     const { user } = useContext(UserContext)
     const portfolio = state.portfolios.find(element => element._id === port_id)
-    
 
     let url
     if (process.env.REACT_APP_ENV === 'development') {
@@ -23,8 +20,11 @@ export default function Portfolio(props) {
         	.then(res => window.location.href = `${url}/artist_portal`)
         	.catch(err => console.log(err))
     }
-    
 
+    // const editPage = () => {
+    //     window.location.href = `${port_id}/edit`
+    // }
+    
     return ( 
         <div>
         {/* This ternary operate fixes a React floor that doesnt find props immediately after a render */}
@@ -39,8 +39,11 @@ export default function Portfolio(props) {
                 <ul>
                 {
                     Object.entries(portfolio.links[0]).map((link, i) => {
-                        if (link[1])
+                        if (link[1]) {
                             return <li key={i}>{link[0]}, {link[1]}</li>
+                        } else { 
+                            return null
+                        }
                         
                     })
                     
@@ -54,7 +57,18 @@ export default function Portfolio(props) {
                 )}
                 <br />
                 
-                <button onClick={deletePortfolio}>Delete</button>
+                {console.log(user)}
+                {console.log(portfolio)}
+                
+                {user._id === portfolio.user ? (
+                    <>
+                        <button onClick={deletePortfolio}>Delete</button>
+                            {/* <button onClick={editPage}>Edit</button> */}
+                    </>
+                ) : (
+                    null
+                )}
+                
             </>
          ) : (
             null
