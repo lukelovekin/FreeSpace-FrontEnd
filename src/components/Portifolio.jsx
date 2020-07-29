@@ -12,7 +12,7 @@ export default function Portfolio(props) {
     if (process.env.REACT_APP_ENV === 'development') {
         url = "http://localhost:3000"
     } else {
-        url = "https://free-space-api.herokuapp.com"
+        url = "https://free-space.gq"
     }
 
     const deletePortfolio = () => {
