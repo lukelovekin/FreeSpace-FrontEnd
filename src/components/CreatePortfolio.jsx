@@ -101,9 +101,7 @@ export default function CreatePortfolio(props) {
     return (
         <div>
             <section className="right-side">
-                <p>The resulting image will be displayed here</p>
                 {imageUrl && (
-
                     imageUrl.map((pic) => (
                          <img src={pic} alt={imageAlt} className="displayed-image" style={{ width: "300px" }} />
                     ))
