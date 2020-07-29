@@ -78,7 +78,7 @@ export default function CreatePortfolio(props) {
             type: "setPortfolios",
             data: [...state.portfolios, portfolio]
         })
-       api.post("portfolios", portfolio, { withCredentials:true })
+        api.post("portfolios", portfolio, { withCredentials:true })
             .then(res => window.location.href = `${url}/artist_portal`)
                 .catch(err => console.log(err))
     }
@@ -87,10 +87,10 @@ export default function CreatePortfolio(props) {
         const portfolio = { name, bio, links, imageUrl }
 
         e.preventDefault()
-        // dispatch({
-        //     type: "setPortfolios",
-        //     data: [...state.portfolios, portfolio]
-        // })
+        dispatch({
+            type: "setPortfolios",
+            data: [...state.portfolios, portfolio]
+        })
         api.patch(`portfolios/${props.match.params.port_id}`, portfolio, { withCredentials: true })
             .then(res => window.location.href = `${url}/artist_portal`)
             .catch(err => console.log(err))
@@ -136,7 +136,6 @@ export default function CreatePortfolio(props) {
             </section>
 
             <form onSubmit={onSubmit} className="form-container">
-
                 <h3>Upload an image (first image will be display pic)</h3>
                 <input type="file" />
                 <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>

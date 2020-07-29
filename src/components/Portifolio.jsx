@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import  { StateContext, UserContext } from '../store'
 import api from '../api'
 
-// import { UserContext } from '../store'
-
 export default function Portfolio(props) {
     const { port_id } = props.match.params
     const {state} = useContext(StateContext)
@@ -23,9 +21,9 @@ export default function Portfolio(props) {
         	.catch(err => console.log(err))
     }
 
-    const editPage = () => {
-        window.location.href = `${port_id}/edit`
-    }
+    // const editPage = () => {
+    //     window.location.href = `${port_id}/edit`
+    // }
     
     return ( 
         <div>

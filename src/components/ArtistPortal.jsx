@@ -39,9 +39,6 @@ export default function ArtistProfile(props) {
 								<iframe width="500" height="300" src={`/portfolios/${item._id}`} title="portfolio page" frameBorder="0" allowFullScreen></iframe><br />{item.name}</Link>
 						</div>
 					</div>
-
-
-
 				))
 				}
 			</div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
 import '../App.css'
-// import {Image} from 'cloudinary-react'
+
 
 const ImageUpload = () => {
   const [imageUrl, setImageUrl] = useState(null)
@@ -36,9 +35,7 @@ const ImageUpload = () => {
             <div className="form-group">
               <input type="file"/>
             </div>
-
             <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
-            {/* <button type="button" className="btn widget-btn">Upload Via Widget</button> */}
           </form>
         </section>
         <section className="right-side">
