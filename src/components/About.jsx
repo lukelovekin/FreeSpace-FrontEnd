@@ -5,8 +5,7 @@ export default function About() {
         <div className="container">
             <div className="row">
                 <div className="column">
-                    <h1>About Page</h1>
-                    <p className="subtitle">On this page users will learn about Freespace</p>
+                    <h1>About FreeSpace</h1>
                 </div>
             </div>
             <div className="row">
