@@ -40,19 +40,24 @@ export default function Portfolio(props) {
                 { portfolio.bio }
                 < br />
 
-                <ul>
-                {
-                    Object.entries(portfolio.links[0]).map((link, i) => {
-                        if (link[1]) {
-                            return <li key={i}>{link[0]}, {link[1]}</li>
-                        } else { 
-                            return null
-                        }
-                        
-                    })
-                    
-                }
-                </ul>
+                {portfolio.links[0] ? (
+                        <ul>
+                            {
+                                Object.entries(portfolio.links[0]).map((link, i) => {
+                                    if (link[1]) {
+                                        return <li key={i}>{link[0]}, {link[1]}</li>
+                                    } else {
+                                        return null
+                                    }
+
+                                })
+
+                            }
+                        </ul>
+                ) : (
+                    null
+                )}
+
                 
                 {portfolio.imageUrl && (
                     portfolio.imageUrl.map((pic, i) => (
