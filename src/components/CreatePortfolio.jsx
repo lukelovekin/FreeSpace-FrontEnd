@@ -157,31 +157,31 @@ export default function CreatePortfolio(props) {
 
                 <div className="input-group">
                     <label htmlFor="facebook">Facebook</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].facebook : portfolio.links.facebook} type="text" name="facebook" id="facebook"  />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].facebook : ""} type="text" name="facebook" id="facebook"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="instagram">Instagram</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].instagram : portfolio.links.instagram} type="text" name="instagram" id="instagram"  />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].instagram : ""} type="text" name="instagram" id="instagram"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="linkedin">Linkedin</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].linkedin : portfolio.links.linkedin} type="text" name="linkedin" id="linkedin" />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].linkedin : ""} type="text" name="linkedin" id="linkedin" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].email : portfolio.links.email} type="text" name="email" id="email" />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].email : ""} type="text" name="email" id="email" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="twitter">Twitter</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].twitter : portfolio.links.twitter} type="text" name="twitter" id="twitter"  />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].twitter : ""} type="text" name="twitter" id="twitter"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="youtube">Youtube</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].youtube : portfolio.links.youtube} type="text" name="youtube" id="youtube" />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].youtube : ""} type="text" name="youtube" id="youtube" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="other">Other</label>
-                    <input onChange={onChange} value={portfolio.links[0] ? portfolio.links[0].other : portfolio.links.other} type="text" name="other" id="other"  />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].other : ""} type="text" name="other" id="other"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="bio">Bio</label>
