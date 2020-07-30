@@ -153,7 +153,7 @@ select:focus {
   }
 }
 
-ul {
+/* ul {
   display: flex;
   flex-wrap: wrap;
 }
@@ -169,4 +169,4 @@ li {
 
 button {
   box-shadow: 2px;
-}
+} */
