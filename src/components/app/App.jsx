@@ -1,16 +1,16 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
-import { stateReducer,  UserContext, ErrorContext, StateContext } from './store'
+import { stateReducer,  UserContext, ErrorContext, StateContext } from '../../store'
 
 import './App.css';
-import api from './api'
-import About from './components/About'
+import api from '../../api/api'
+import About from '../About'
 // import SignUp from './components/SignUp'
-import NoMatch from './components/NoMatch'
-import Portfolio from './components/Portifolio'
-import Portfolios from './components/Portfolios'
-import ArtistProfile from './components/ArtistPortal'
-import CreatePortfolio from './components/CreatePortfolio'
+import NoMatch from '../NoMatch'
+import Portfolio from '../Portifolio'
+import Portfolios from '../Portfolios'
+import ArtistProfile from '../ArtistPortal'
+import CreatePortfolio from '../CreatePortfolio'
 
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
   const [user, setUser] = useState(UserContext) //false
   const [error, setError] = useState(ErrorContext) //false
 
+  // move to an env file
+  //setting up environment
   let url
 if (process.env.REACT_APP_ENV==='development') {
    url = "http://localhost:4000"
@@ -25,19 +27,18 @@ if (process.env.REACT_APP_ENV==='development') {
    url = "https://free-space-api.herokuapp.com"
 }
   
-  // at the moment all this is doing is console logging the database data.
+//getting all portfolio data and storing it in a reducer
   useEffect(() => {
     api.get('portfolios')
       .then(res => {
-        // console.log(res.data)
-        // update portfolios in the reducer with the value res.data
         dispatch({
           type: 'setPortfolios',
           data: res.data
         })
       })
-      
-  }, [])     
+    }, [])    
+
+    // this useEffect and next four functions are all required for user auth     
   useEffect(() => {
     api.get(`/users/me`, {
       withCredentials: true

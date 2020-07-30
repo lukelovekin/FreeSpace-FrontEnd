@@ -4,6 +4,7 @@ const UserContext = createContext(false)
 const ErrorContext = createContext(false)
 const StateContext = createContext()
 
+// Reducer function
 const stateReducer = (state, action) => {
     switch (action.type) {
         case 'setPortfolios':
