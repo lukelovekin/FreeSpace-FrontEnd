@@ -3,8 +3,8 @@ import React from 'react';
 import Enzyme, { shallow } from "enzyme"
 import EnzymeAdapter from "enzyme-adapter-react-16"
 import App from './App';
-import NoMatch from './components/NoMatch'
-import About from './components/About';
+import NoMatch from '../NoMatch'
+import About from '../About';
 
 
 Enzyme.configure({ adapter: new EnzymeAdapter()})
@@ -31,7 +31,7 @@ it('renders the counter display', () => {
 
 })
 
-//prevent default makes this test fail
+//the prevent default onClicks makes this test fail
 it('clicking the button logs out', () => {
   const wrapper = shallow(<App />)
   wrapper.find("button").simulate('click')

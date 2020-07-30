@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import  { StateContext, UserContext } from '../store'
-import api from '../api'
+import api from '../api/api'
 
 export default function Portfolio(props) {
     const { port_id } = props.match.params
@@ -8,6 +8,8 @@ export default function Portfolio(props) {
     const { user } = useContext(UserContext)
     const portfolio = state.portfolios.find(element => element._id === port_id)
 
+    //move to a env file
+    //environments
     let url
     if (process.env.REACT_APP_ENV === 'development') {
         url = "http://localhost:3000"
@@ -15,12 +17,14 @@ export default function Portfolio(props) {
         url = "https://free-space.gq"
     }
 
+    //deletes the portfolio
     const deletePortfolio = () => {
         api.delete(`portfolios/${portfolio._id}` )
         	.then(res => window.location.href = `${url}/artist_portal`)
         	.catch(err => console.log(err))
     }
 
+    //onclick this redirects
     const editPage = () => {
         window.location.href = `${port_id}/edit`
     }

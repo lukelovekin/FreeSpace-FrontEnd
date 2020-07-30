@@ -7,15 +7,17 @@ export default function ArtistProfile(props) {
 	const { state} = useContext(StateContext)
 	const {user} = useContext(UserContext) //false
 	
-	let artistsPortfolio = []
-	
+	// move to env file
+	//environment setup
 	let url
 	if (process.env.REACT_APP_ENV === 'development') {
 		url = "http://localhost:3000"
 	} else {
 		url = "https://free-space.gq"
 	}
-
+	
+	//will use this to find and store matching portfolios to user (could have used filter i know now)
+	let artistsPortfolio = []
 	state.portfolios.forEach((item, index) => {
 		if ( item.user === user._id)
 			return artistsPortfolio.push(item)

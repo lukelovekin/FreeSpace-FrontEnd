@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import {  UserContext, ErrorContext } from '../store'
 
+//Not in use at the moment
 export default function SignUp() {
 
     const { user, handleLogOut, handleSignUp, handleLogIn, handleGoogleAuth } = useContext(UserContext)
