@@ -125,6 +125,7 @@ export default function CreatePortfolio(props) {
 
     return (
         <div>
+            
             <section className="right-side">
                 {portfolio.imageUrl && (
                     portfolio.imageUrl.map((pic, i) => (
