@@ -21,9 +21,9 @@ export default function Portfolio(props) {
         	.catch(err => console.log(err))
     }
 
-    // const editPage = () => {
-    //     window.location.href = `${port_id}/edit`
-    // }
+    const editPage = () => {
+        window.location.href = `${port_id}/edit`
+    }
     
     return ( 
         <div>
@@ -63,7 +63,7 @@ export default function Portfolio(props) {
                 {user._id === portfolio.user ? (
                     <>
                         <button onClick={deletePortfolio}>Delete</button>
-                            {/* <button onClick={editPage}>Edit</button> */}
+                            <button onClick={editPage}>Edit</button>
                     </>
                 ) : (
                     null
