@@ -23,7 +23,7 @@ export default function ArtistProfile(props) {
 
     return (
 		<div>
-				<h1>Your Portfolio/s</h1>
+				<h3>Your Portfolio/s</h3>
 
 			<div>
 				{

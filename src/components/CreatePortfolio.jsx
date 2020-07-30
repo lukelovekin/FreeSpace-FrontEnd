@@ -134,7 +134,7 @@ export default function CreatePortfolio(props) {
             </section>
 
             <form onSubmit={onSubmit} className="form-container">
-                <h3>Upload an image (first image will be display pic)</h3>
+                <h6>Upload images</h6>
                 <input type="file" />
                 <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
 

@@ -15,9 +15,9 @@ const { user, handleGoogleAuth } = useContext(UserContext)
         <div>
             {user ? (
                     <>
-                        <h1>Welcome to Freespace</h1>
-                        <h2>Logged in as {user.displayName || user.username}</h2>
-                        <button onClick={newPage}><h4>Create a Portfolio</h4></button>
+                        <h3>Welcome to Freespace</h3>
+                        <h5>Logged in as {user.displayName || user.username}</h5>
+                        <button onClick={newPage}><h5>Create a Portfolio</h5></button>
                     </>
             ) : (
                     <>
