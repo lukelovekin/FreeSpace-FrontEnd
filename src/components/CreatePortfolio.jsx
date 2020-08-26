@@ -188,7 +188,7 @@ export default function CreatePortfolio(props) {
                             <textarea onChange={onChange} value={portfolio.bio} type="text" name="bio" id="bio" placeholder={portfolio.bio} />
                 </div>
 
-                {!newPort ? (
+                {portfolio.links ? (
                     <div className="input-group">    
                     <   button  className="btn" onClick={onEdit}>Submit</button>
                     </div>
