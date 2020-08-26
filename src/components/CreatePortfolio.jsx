@@ -1,27 +1,31 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { StateContext, /*UserContext,*/  } from '../store'
-import api from '../api'
+import api from '../api/api'
 
+
+// this component could have been split into at least 2 components
 export default function CreatePortfolio(props) {
     const {state, dispatch} = useContext(StateContext)
     const [imageAlt, setImageAlt] = useState(null)
     const [newPort, setNewPort ] = useState(true)
-
+    
     let [portfolio, setPortfolio] = useState({
         name: "",
         bio: "",
         links: [{
-            facebook: undefined,
-            instagram: undefined,
-            linkedin: undefined,
-            email: undefined,
-            twitter: undefined,
-            youtube: undefined,
-            other: undefined
+            facebook: "",
+            instagram: "",
+            linkedin: "",
+            email: "",
+            twitter: "",
+            youtube: "",
+            other: ""
         }],
         imageUrl: []
         
     })
+
+    const oldState = {...portfolio}
     
     let url
     if (process.env.REACT_APP_ENV === 'development') {
@@ -30,15 +34,15 @@ export default function CreatePortfolio(props) {
         url = "https://free-space.gq"
     }
 
+    //gets one portfolio if it matches portfolio id
     useEffect(() => {
         api.get(`portfolios/${props.match.params.port_id}`)
         .then(res => {setPortfolio(res.data)
             setNewPort(false)})
     }, [props.match.params.port_id])
-
-    const onChange = (e) => {
-        const oldState = {...portfolio}
-
+    
+    // a very ugle onchange method that i know i could have done a lot DRY if it didnt keep bugging out last minute
+    const onChange = (e) => {  
         switch (e.target.name) {
             case "name":
                 // can validate here
@@ -48,42 +52,36 @@ export default function CreatePortfolio(props) {
                 // and here
                 setPortfolio({ ...oldState, bio: e.target.value })
 
+                // Very unDRY as REACT cant find oldState.links straight away and i run out of time to DRY up
                 break
-            case "facebook":
-                setPortfolio({ ...oldState, links: [{...oldState.links[0], facebook: e.target.value }]})
+            case "facebook":                                             
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], facebook: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, facebook: e.target.value }] })
                 break
             case "instagram":
-                setPortfolio({ ...oldState, links: [{ ...oldState.links[0], instagram: e.target.value }]
-                 })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], instagram: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, instagram: e.target.value }] })
                 break
             case "linkedin":
-                setPortfolio({
-                    ...oldState, links: [{ ...oldState.links[0], linkedin: e.target.value }]
-                })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], linkedin: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, linkedin: e.target.value }] })
                 break
             case "email":
-                setPortfolio({ ...oldState, links: [{ ...oldState.links[0], email: e.target.value }]
-                 })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], email: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, email: e.target.value }] })
                 break
             case "twitter":
-                setPortfolio({ ...oldState, links: [{ ...oldState.links[0], twitter: e.target.value }]
-                 })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], twitter: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, twitter: e.target.value }] })
                 break
             case "youtube":
-                setPortfolio({ ...oldState, links: [{ ...oldState.links[0], youtube: e.target.value }]
-                 })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], youtube: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, youtube: e.target.value }] })
                 break
             case "other":
-                setPortfolio({ ...oldState, links: [{ ...oldState.links[0], other: e.target.value }]
-                 })
+                setPortfolio(oldState.links ? { ...oldState, links: [{ ...oldState.links[0], other: e.target.value }] } : { ...oldState, links: [{ ...oldState.links, other: e.target.value }] })
                 break
             default: 
                 console.log("error")             
         }
     }
 
+    //send new portfolio data to backend
     const onSubmit = (e) => {
-
         e.preventDefault()
         dispatch({
             type: "setPortfolios",
@@ -94,6 +92,7 @@ export default function CreatePortfolio(props) {
                 .catch(err => console.log(err))
     }
 
+    //patches portfolio data to backend
     const onEdit = (e) => {
         e.preventDefault()
         api.patch(`portfolios/${props.match.params.port_id}`, portfolio, { withCredentials: true })
@@ -101,6 +100,7 @@ export default function CreatePortfolio(props) {
             .catch(err => console.log(err))
     }
 
+    //uploads images to cloudinary
     const handleImageUpload = () => {
         const { files } = document.querySelector('input[type="file"]')
         const formData = new FormData()
@@ -142,7 +142,7 @@ export default function CreatePortfolio(props) {
                 <br/>
                 <div className="input-group">
                     <label htmlFor="name">Name</label>
-                    <input onChange={onChange} value={portfolio.name} type="text" name="name" id="name" placeholder={portfolio.name} />
+                    <input onChange={onChange} value={portfolio.name} type="text" name="name" id="name" />
                 </div>
 
                 {/* Extremely DRYer method just doesnt quite work  */}
@@ -157,38 +157,38 @@ export default function CreatePortfolio(props) {
 
                 <div className="input-group">
                     <label htmlFor="facebook">Facebook</label>
-                    <input onChange={onChange} value={portfolio.links[0].facebook} type="text" name="facebook" id="facebook" placeholder={portfolio.links[0] ? portfolio.links.facebook : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].facebook : ""} type="text" name="facebook" id="facebook"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="instagram">Instagram</label>
-                            <input onChange={onChange} value={portfolio.links[0].instagram} type="text" name="instagram" id="instagram" placeholder={portfolio.links ? portfolio.links[0].instagram : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].instagram : ""} type="text" name="instagram" id="instagram"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="linkedin">Linkedin</label>
-                    <input onChange={onChange} value={portfolio.links[0].linkedin} type="text" name="linkedin" id="linkedin" placeholder={portfolio.links ? portfolio.links.linkedin : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].linkedin : ""} type="text" name="linkedin" id="linkedin" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="email">Email</label>
-                            <input onChange={onChange} value={portfolio.links[0].email} type="text" name="email" id="email" placeholder={portfolio.links ? portfolio.links[0].email : null}/>
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].email : ""} type="text" name="email" id="email" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="twitter">Twitter</label>
-                            <input onChange={onChange} value={portfolio.links[0].twitter} type="text" name="twitter" id="twitter" placeholder={portfolio.links ? portfolio.links[0].twitter : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].twitter : ""} type="text" name="twitter" id="twitter"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="youtube">Youtube</label>
-                            <input onChange={onChange} value={portfolio.links[0].youtube} type="text" name="youtube" id="youtube" placeholder={portfolio.links ? portfolio.links[0].youtube : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].youtube : ""} type="text" name="youtube" id="youtube" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="other">Other</label>
-                            <input onChange={onChange} value={portfolio.links[0].other} type="text" name="other" id="other" placeholder={portfolio.links ? portfolio.links[0].other : null} />
+                    <input onChange={onChange} value={portfolio.links ? portfolio.links[0].other : ""} type="text" name="other" id="other"  />
                 </div>
                 <div className="input-group">
                     <label htmlFor="bio">Bio</label>
-                            <textarea onChange={onChange} value={portfolio.bio} type="text" name="bio" id="bio" placeholder={portfolio.bio} />
+                            <textarea onChange={onChange} value={portfolio.bio} type="text" name="bio" id="bio" />
                 </div>
 
-                {portfolio.links ? (
+                {!newState ? (
                     <div className="input-group">    
                     <   button  className="btn" onClick={onEdit}>Submit</button>
                     </div>
