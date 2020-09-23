@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #182b50;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -144,6 +144,10 @@ select:focus {
   outline: none !important;
   border-bottom: 1px solid #26a69a !important;
   box-shadow: 0 1px 0 0 #26a69a;
+}
+
+nav {
+  background-color: #26a69a;
 }
 
 @media all and (max-width: 640px) {

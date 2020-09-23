@@ -102,7 +102,7 @@ if (process.env.REACT_APP_ENV==='development') {
     <StateContext.Provider value={{state, dispatch}}>
     <UserContext.Provider value={{user, setUser, handleLogIn, handleGoogleAuth, handleSignUp, handleLogOut}}>
     <ErrorContext.Provider value={{error, setError}}>
-        <nav>
+        <nav style={{backgroundColor: "grey"}}>
           {user ? (
               <>
                 <Link to="/"> Home </Link>
@@ -114,6 +114,8 @@ if (process.env.REACT_APP_ENV==='development') {
               <>
                 {/* <Link to="/sign_up">SignUp</Link>
                 <Link to="/login">Login</Link> */}
+                <Link to="/"> Home </Link>
+                <Link to="/about">About</Link>
                 <button onClick={handleGoogleAuth}>Google Auth</button>
               </>
           )}            

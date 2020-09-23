@@ -18,7 +18,7 @@ export default function SignUp() {
                             </>
                         ) : (
                                 <>
-                                    <h2>Register</h2>
+                                    <h4>Register</h4>
                                     <form onSubmit={handleSignUp}>
                                         <label>Username</label>
                                         <input />
@@ -26,21 +26,7 @@ export default function SignUp() {
                                         <input />
                                         <button>Sign up</button>
                                     </form>
-                                    <h2>Login</h2>
-                                    <form onSubmit={handleLogIn}>
-                                        <label>Username</label>
-                                        <input />
-                                        <label>Password</label>
-                                        <input />
-                                        <button>Sign In</button>
-                                    </form>
-                                    <button onClick={handleGoogleAuth}>Google Auth</button>
-                                    {error ? (
-                                        <div>
-                                            <h4>{error.name}</h4>
-                                            <p>{error.message}</p>
-                                        </div>
-                                    ) : (null)}
+                                    
                                 </>
                             )}
                     </div>

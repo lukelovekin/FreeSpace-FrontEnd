@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { StateContext } from '../store'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../store'
+import SignUp from './SignUp'
 
 //home page, list of all the portfolios from the backend
 export default function Portfolios() {
@@ -17,20 +18,24 @@ const { user, handleGoogleAuth } = useContext(UserContext)
         <div>
             {user ? (
                     <>
-                        <h3>Welcome to Freespace</h3>
+                        <h4>Welcome</h4>
                         <h5>Logged in as {user.displayName || user.username}</h5>
                         <button onClick={newPage}><h5>Create a Portfolio</h5></button>
                     </>
             ) : (
                     <>
-                        <h1>Welcome to Freespace</h1>
-                        <button onClick={handleGoogleAuth}><h2>Create a Portfolio</h2></button>
+                        <h4>Welcome</h4>
+                        <button onClick={handleGoogleAuth}><h6>Create </h6></button>
                         <br />
                     </>
             )}
+            <SignUp/>
+                <br/>
+            <button onClick={handleGoogleAuth}>Google Auth</button>
 
-            <ul>     
-            {
+            {/* <ul>     
+            {   
+
                 state.portfolios.map((item, index) => (
                     <li key={index}>
                         {console.log(item)}
@@ -40,7 +45,7 @@ const { user, handleGoogleAuth } = useContext(UserContext)
                     </li>
                 ))
             }
-            </ul>
+            </ul> */}
         </div>
     )
 }
